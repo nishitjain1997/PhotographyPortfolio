@@ -12,9 +12,33 @@
         <link rel="stylesheet" type="text/css" href="css/index-style.css"/>
         
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-        <script type="text/javascript" src="js/index-script.js"></script>
+        <script type="text/javascript">
+            function animateBody() {
+                $("body").animate({
+                    'top':'-100%'
+                },800);
+            };
+            
+            $(document).ready(function() {
+                window.setTimeout(function() {
+                    animateBody();
+                },3200);
+                
+                window.setTimeout(function() {
+                    window.location = 'home.html'
+                },4000);
+            })
+        </script>
     </head>
     <body>
-        
+        <div id="back">
+            <div class="spinner">
+
+            </div>
+            <div class="loader">
+                <img id="camera" src="./img/loader-camera.png"/>
+                <img id="lens" src="./img/loader-lens.png"/>
+            </div>
+        </div>
     </body>
 </html>

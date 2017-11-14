@@ -3,3 +3,145 @@
     padding: 0;
     border: 0;
 }
+
+html {
+    overflow: hidden;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#back {
+    background-color: skyblue;
+    height: 100%;
+    width: 0%;
+    animation: back 3s linear forwards;
+}
+
+.spinner {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 30%;
+    left: calc(50% - 75px);
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.spinner::before, .spinner::after {
+    content: '';
+    display: block;
+}
+
+.spinner::before {
+    border: 5px solid transparent;
+    border-top-color: blue;
+    border-bottom-color: blue;
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    animation: spin 1500ms linear infinite;
+}
+
+.spinner::after {
+    border: 5px solid transparent;
+    border-left-color: blue;
+    border-right-color: blue;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    animation: spin 1500ms linear infinite reverse;
+}
+
+@keyframes spin {
+    0% {transform: rotateZ(0deg) scale(1);}
+    40% {transform: rotateZ(180deg) scale(1);}
+    50% {transform: rotateZ(180deg) scale(0.5);}
+    90% {transform: rotateZ(360deg) scale(0.5);}
+    100% {transform: rotateZ(360deg) scale(1);}
+}
+
+.loader {
+    background-color: #eee;
+    height: 30px;
+    width: 60%;
+    position: absolute;
+    top: 65%;
+    left: 15%;
+}
+
+.loader #camera {
+    height: 100px; 
+    width: 100px;
+    position: absolute;
+    top: -50px;
+    left: auto;
+    right: -80px;
+    z-index: 1;
+    animation: camera 300ms linear infinite;
+}
+
+.loader #lens {
+    background-color: white;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: -15px;
+    right: 98%;
+    z-index: 2;
+    animation: lens 3s linear forwards;
+}
+
+.loader::after {
+    content: '';
+    height: 30px;
+    width: 0%;
+    background-color: red;
+    display: block;
+    animation: loader 3s linear forwards;
+}
+
+@keyframes back {
+    0% {width: 2%;}
+    30% {width: 38%;}
+    60% {width: 41%;}
+    75% {width: 68%;}
+    90% {width: 70%;}
+    100% {width: 100%;}
+}
+
+@keyframes lens {
+    0% {right: 98%;transform: rotateZ(0deg);}
+    30% {right: 60%;transform: rotateZ(1200deg)}
+    60% {right: 57%;transform: rotateZ(1600deg);}
+    75% {right: 30%;transform: rotateZ(2000deg);}
+    90% {right: 27%;transform: rotateZ(2200deg);}
+    100% {right: -8.5%;transform: rotateZ(3600deg);}
+}
+
+@keyframes loader {
+    0% {width: 2%;}
+    30% {width: 38%;}
+    60% {width: 41%;}
+    75% {width: 68%;}
+    90% {width: 70%;}
+    100% {width: 100%;}
+}
+
+@keyframes camera {
+    0% {transform: rotateZ(0deg);}
+    30% {transform: rotateZ(10deg);}
+    60% {transform: rotateZ(-10deg);}
+}
