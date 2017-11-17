@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="keywords" content="photography,photo,photographer,portfolio,photography portfolio,camera,click,picture,picture portfolio,home"/>
+        <meta name="description" content="Dispersion Photography | Shashank Jain Photography"/>
+        <meta name="author" content="Nishit Jain"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        
+        <title>Home | Dispersion Photography</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/home-style.css"/>
+        
+        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+        <script>
+            $(document).ready(function() {
+                var bannerHeight = $("#banner").height();
+                
+                $(window).scroll(function() {
+                    var top = $(window).scrollTop();
+                    
+                    if(top < bannerHeight) {
+                        $("body").mousemove(function() {
+                            var x = event.pageX;
+                            var y = event.pageY;
+                        })
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <nav>
+            
+        </nav>
+        <div id="banner">
+            <div id="banner-overlay"></div>
+        </div>
+        <div style="height: 200%">
+            
+        </div>
+    </body>
+</html>

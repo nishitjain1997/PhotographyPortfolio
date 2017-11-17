@@ -17,7 +17,7 @@ html,body {
 }
 
 #back {
-    background-color: skyblue;
+    background-color: #37474F;
     height: 100%;
     width: 0%;
     animation: back 3s linear forwards;
@@ -73,6 +73,7 @@ html,body {
 }
 
 .loader {
+    border: 1px solid white;
     background-color: #eee;
     height: 30px;
     width: 60%;
