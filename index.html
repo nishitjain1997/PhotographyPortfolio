@@ -9,6 +9,7 @@
         
         <title>Welcome | Dispersion Photography</title>
         
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/index-style.css"/>
         
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
@@ -21,24 +22,56 @@
             
             $(document).ready(function() {
                 window.setTimeout(function() {
+                    $(".circle").hide();
+                    $(".text").animate({
+                        'width':'0%'
+                    },200);
+                    
+                    window.setTimeout(function() {
+                        $(".text").addClass("green");
+                        $(".text").html("Complete");
+                        $(".text").animate({
+                            'width':'100%'
+                        },200);
+                    },200);
+                },3500);
+                
+                window.setTimeout(function() {
                     animateBody();
-                },3200);
+                },4500);
                 
                 window.setTimeout(function() {
                     window.location = 'home.html'
-                },4000);
+                },5500);
             })
         </script>
     </head>
     <body>
+        <noscript>
+            <div id="overlay">
+                <div id="inner">
+                    <img src="img/nature_mini/_F1A1015.jpg"/>
+                </div>
+                <h1>Oops! Javascript unavailable. Turn on javascript and refresh to continue.</h1>
+            </div>
+        </noscript>
         <div id="back">
             <div class="spinner">
-
+            </div>
+            <div class="load">
+                <div class="text blue">Loading</div>
+                <div class="circle blue" id="one"></div>
+                <div class="circle blue" id="two"></div>
+                <div class="circle blue" id="three"></div>
             </div>
             <div class="loader">
-                <img id="camera" src="./img/loader-camera.png"/>
-                <img id="lens" src="./img/loader-lens.png"/>
             </div>
+        </div>
+        <div id="slider">
+            <img id="img-1" src="img/architecture_mini/_F1A6488.jpg"/>
+            <img id="img-2" src="img/nature_mini/_F1A5845.jpg"/>
+            <img id="img-3" src="img/portraits_mini/_F1A3478.jpg"/>
+            <img id="img-4" src="img/products_mini/_F1A0209.jpg"/>
         </div>
     </body>
 </html>

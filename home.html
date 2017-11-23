@@ -14,17 +14,28 @@
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
         <script>
             $(document).ready(function() {
-                var bannerHeight = $("#banner").height();
-                
                 $(window).scroll(function() {
                     var top = $(window).scrollTop();
                     
+                    /* Banner  */
+                    var bannerHeight = $("#banner").height();
+                    var bannerWidth = $("#banner").width();
+                    
                     if(top < bannerHeight) {
                         $("body").mousemove(function() {
+                            /* Pointer position in the page. */
                             var x = event.pageX;
                             var y = event.pageY;
+                            
+                            /* Convert position to percentage. */
+                            x = (x / bannerWidth) * 10;
+                            y = (y / bannerHeight) * 10;
+                            
+                            /* Move background. */
+                            console.log(x);
                         })
                     }
+                    
                 })
             })
         </script>

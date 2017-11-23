@@ -1,0 +1,39 @@
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#overlay {
+    background-color: lightgrey;
+    height: 95%;
+    width: 95%;
+    position: fixed;
+    top: 2.5%;
+    left: 2.5%;
+    z-index: 100;
+    box-shadow: 4px 4px 8px black;
+    font-family: monospace;
+}
+
+#overlay #inner {
+    height: 85%;
+    width: 90%;
+    position: relative;
+    top: 3%;
+    left: 5%;
+}
+
+#overlay #inner img {
+    height: 100%;
+    width: 100%;
+}
+
+#overlay h1 {
+    text-align: center;
+    height: 8%;
+    width: 96%;
+    position: relative;
+    top: 6%;
+    left: 2%;
+}
