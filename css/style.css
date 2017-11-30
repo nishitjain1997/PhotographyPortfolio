@@ -1,9 +1,24 @@
+/*
+    Colors-
+        Black: #020204  (02,02,04)
+        Dark Grey: #22222A  (34,34,42)
+        Medium Grey: #46413B    (70,65,59)
+        Light Grey: #BEBBB6 (190,187,182)
+        White: #F7F7F5  (247,247,245)
+*/
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200|Dancing+Script|Shadows+Into+Light');
+
 * {
     border: 0;
     padding: 0;
     margin: 0;
 }
 
+html {
+    background-color: #F7F7F5;
+}
+
+/*    Javascript unavailable     */
 #overlay {
     background-color: lightgrey;
     height: 95%;
@@ -36,4 +51,131 @@
     position: relative;
     top: 6%;
     left: 2%;
+}
+/*    Javascript unavailable     */
+
+/*    Menu-overlay     */
+
+#menu-overlay {
+    height: 0%;
+    width: 100%;
+    background-color: rgba(02,02,04,0.8);
+    z-index: 90;
+    position: fixed;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+#overlay-content {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+#overlay-content a {
+    display: block;
+    height: 35px;
+    width: 40px;
+    text-decoration: none;
+    font-size: 30px;
+    padding-top: 8px;
+    color: #F7F7F5;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+#overlay-content #cross .cross-bar {
+    height: 5px;
+    width: 30px;
+    background-color: #BEBBB6;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+
+#overlay-content #cross:hover .cross-bar {
+    background-color: #F7F7F5;
+}
+
+#overlay-content #cross #cross-bar-1 {
+    transform: rotate(45deg) translate(6px,-2px);
+}
+
+#overlay-content #cross #cross-bar-2 {
+    transform: rotate(-45deg) translate(12px, -5px);
+}
+
+/*    Menu-overlay ends     */
+
+/*    Navbar     */
+nav {
+    border-bottom: 1px solid #BEBBB6;
+    background-color: rgba(34,34,42,.4);
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    transition-property: background-color, border-bottom;
+    transition-duration: 500ms;
+    overflow: hidden;
+}
+
+nav:hover {
+    background-color: rgba(34,34,42,.6);
+    border-bottom: 1px solid #F7F7F5;
+}
+
+nav:hover #menu-bar .bar {
+    background-color: #F7F7F5;
+}
+
+nav:hover #menu-bar .bar::after {
+    background-color: #F7F7F5;
+}
+
+nav #menu-bar {
+    border: 2px solid transparent;
+    height: 70%;
+    width: 40px;
+    margin-left: 25px;
+    margin-top: 5px;
+    z-index: 80;
+    float: left;
+    opacity: 1;
+}
+
+nav #menu-bar:hover {
+    cursor: pointer;
+}
+
+nav #menu-bar .bar {
+    height: 5px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 22%;
+    background-color: #BEBBB6;
+    transition: 500ms;
+}
+
+nav #menu-bar .bar::after {
+    content: '';
+    height: 5px;
+    width: 10px;
+    background-color: #BEBBB6;
+    position: absolute;
+    left: 55px;
+    transform: skewX(-30deg);
+    transition: 500ms;
+}
+
+nav #menu-bar #bar-2 {
+    width: 60%;
+}
+
+nav #menu-bar #bar-2::after {
+    left: 48px;
+}
+
+/*    Navbar Ends     */
+
+.clear {
+    clear: both;
 }

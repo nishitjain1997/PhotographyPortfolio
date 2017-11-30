@@ -9,46 +9,244 @@
         
         <title>Home | Dispersion Photography</title>
         
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/home-style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
         
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
         <script>
+            function toggleNav() {
+                var overlayStatus = parseInt($("#menu-overlay").css("height"));
+                
+                if(overlayStatus == 0) {
+                    $("#menu-overlay").animate({
+                        'height' : "100%"
+                    },200);
+                    $("#menu-bar").animate({
+                        'opacity' : "0"
+                    },100);
+                }
+                else {
+                    $("#menu-overlay").animate({
+                        'height' : "0%"
+                    },200);
+                    $("#menu-bar").animate({
+                        'opacity' : "1"
+                    },500);
+                }
+            }
+            
             $(document).ready(function() {
+                $(".toggle").click(function() {
+                    toggleNav();
+                });
+                
                 $(window).scroll(function() {
-                    var top = $(window).scrollTop();
+                    var screenTop = $(window).scrollTop();
+                    var screenBottom = screenTop + $(window).height();
                     
-                    /* Banner  */
-                    var bannerHeight = $("#banner").height();
-                    var bannerWidth = $("#banner").width();
+                    var bannerTop = $("#banner").offset().top;
+                    var bannerBottom = bannerTop + $("#banner").height();
                     
-                    if(top < bannerHeight) {
-                        $("body").mousemove(function() {
-                            /* Pointer position in the page. */
-                            var x = event.pageX;
-                            var y = event.pageY;
-                            
-                            /* Convert position to percentage. */
-                            x = (x / bannerWidth) * 10;
-                            y = (y / bannerHeight) * 10;
-                            
-                            /* Move background. */
-                            console.log(x);
+                    if(screenTop <= bannerBottom) {
+                        var offset = screenTop / 2;
+                        $("#banner").css({
+                            'background-position': '0px ' + offset + 'px'
+                        });
+                        
+                        offset /= 10;
+                        offset += 45;
+                        
+                        $("#banner-text h1").css({
+                            'top': offset + "%"
                         })
                     }
                     
-                })
+                    var aboutTop = $("#about").offset().top;
+                    var aboutBottom = aboutTop + $("#about").height();
+                    
+                    var portfolioTop = $("#portfolio").offset().top;
+                    var portfolioBottom = portfolioTop + $("#portfolio").height();
+                    
+                    if(screenTop > portfolioTop - 100 && screenTop < portfolioBottom) {
+                        $("nav").css({
+                            'height':'0px'
+                        });
+                    }
+                    else {
+                        $("nav").css({
+                            'height':'50px'
+                        });
+                    }
+                });
+                
+                $(".slide-section").click(function(e) {
+                    e.preventDefault();
+                    var linkHref = $(this).attr("href");
+                    $("html,body").animate({
+                        scrollTop: $(linkHref).offset().top
+                    },500);
+                });
             })
         </script>
     </head>
     <body>
+        <noscript>
+            <div id="overlay">
+                <div id="inner">
+                    <img src="img/nature_mini/_F1A1015.jpg"/>
+                </div>
+                <h1>Oops! Javascript unavailable. Turn on javascript and refresh to continue.</h1>
+            </div>
+        </noscript>
+        
+        <div id="menu-overlay">
+            <div id="overlay-content">
+                <a href="javascript:void(0)"><div id="cross" class="toggle">
+                    <div class="cross-bar" id="cross-bar-1"></div>
+                    <div class="cross-bar" id="cross-bar-2"></div>
+                </div></a>
+            </div>
+        </div>
+        
         <nav>
-            
+            <div id="menu-bar" class="toggle">
+                <div id="bar-1" class="bar"></div>
+                <div id="bar-2" class="bar"></div>
+            </div>
         </nav>
+        
         <div id="banner">
-            <div id="banner-overlay"></div>
+            <div id="banner-text">
+                <h1>Fotophilous</h1>
+                <a href="#about" class="slide-section">
+                    <i class="fa fa-chevron-down"></i>
+                </a>
+            </div>
         </div>
-        <div style="height: 200%">
-            
+        
+        <div id="about">
+            <div id="about-header" class="header">
+                <h1>About Me</h1>
+            </div>
+            <div id="about-content">
+                <div id="about-left" class="about-half">
+                    <h2>
+                        <p>
+                            Life is a story to be explored, experienced and unfolded. We all try to find our own ways to live and share our stories with others. Me? I capture photos.
+                        </p>
+                        <p>
+                            I am a professional photographer with a clear focus - to help others experience a chapter of their life to relive; with a larger goal to create such memories that together define the story of my life.
+                        </p>
+                        <p>
+                            A commerce graduate is only what my parents' pressure could write into my story, and I always knew that I needed to change the lens. As they say, when life gets blurry, all one needs is to adjust their focus.
+                        </p>
+                        <p>
+                            My focus was set in LLA when I got saturated with the exposure of various forms of photography with my specialization in Food, Travel, Architecture and Interiors, and Product photography.
+                        </p>
+                        <p>
+                            As the old saying goes, a good photograph is one that communicates a fact, touches the heart and leaves the viewer a changed person for having seen it. My current assignment with <a href="#">UberEats</a>, like all my other assignments, is a testimony of my belief in that principle.
+                        </p>
+                        <p>
+                            I would like to thank you for spending some time of your life experiencing my story and hope that you would provide me an opportunity to capture some chapters of your life and turn it into sweet memories.
+                        </p>
+                    </h2>
+                </div>
+                <div id="about-right" class="about-half">
+                    <div id="self-image">
+                    </div>
+                </div>
+                <div id="about-bottom">
+                    <h2>
+                    </h2>
+                </div>
+            </div>
+            <div class="clear"></div>
         </div>
+        
+        <div id="portfolio">
+            <div id="portfolio-header" class="header">
+                <h1>Portfolio</h1>
+            </div>
+            <div id="portfolio-content">
+                <div id="column-1" class="column column-third">
+                    <figure>
+                        <img src="img/webpages/architecture-interior-farmhouse-farm-house-blue-sky-lights-photography-fotophilous.jpg"/>
+                        <figcaption>Architecture &amp; Interior</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/webpages/architecture-interior-restaurant-table-chairs-lights-yellow-photography-fotophilous.jpg"/>
+                        <figcaption>Architecture &amp; Interior</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/webpages/food.jpg"/>
+                        <figcaption>Food</figcaption>
+                    </figure>
+                </div>
+                <div id="column-2" class="column column-half">
+                    <figure>
+                        <img src="img/webpages/products-still-life-passion-sapil-perfume-photography-fotophilous.jpg"/>
+                        <figcaption>Products &amp; Still Life</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/webpages/portrait-rhythm-tahilramaney-photography-fotophilous.jpg"/>
+                        <figcaption>Portraits</figcaption>
+                    </figure>
+                </div>
+                <div id="column-3" class="column column-third">
+                    <figure>
+                        <img src="img/webpages/nature-travel-clouds-blue-sky-photography-fotophilous.jpg"/>
+                        <figcaption>Nature &amp; Travel</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/webpages/nature-travel-river-rocks-photography-fotophilous.jpg"/>
+                        <figcaption>Nature &amp; Travel</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/webpages/products-still-life-amazon-dilivery-photography-fotophilous.jpg"/>
+                        <figcaption>Products &amp; Still Life</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        
+        <div id="break">
+            <div id="break-inner">
+                <div id="social-header" class="header">
+                    <h1>Social</h1>
+                </div>
+                <div id="social">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-google"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div id="tags-header" class="header">
+                <h1>Tags</h1>
+            </div>
+            <div id="tags-1" class="tags">
+                <a href="#banner" class="slide-section">Home</a>
+                <a href="#">Architecture</a>
+                <a href="#">Interior</a>
+                <a href="#">Nature</a>
+                <a href="#">Travel</a>
+                <a href="#">Food</a>
+            </div>
+            <div id="tags-2" class="tags">
+                <a href="#portfolio" class="slide-section">Portfolio</a>
+                <a href="#">Products</a>
+                <a href="#">Still Life</a>
+                <a href="#">Portraits</a>
+                <a href="#">Info</a>
+            </div>
+            <div id="footer-content">
+                <h2><a href="#banner" class="slide-section">Fotophilous</a></h2>
+                <h3>&copy; Copyright 2017 | Shashank Jain photography | Website created by: Nishit Jain</h3>
+            </div>
+        </footer>
     </body>
 </html>

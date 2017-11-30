@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200');
+
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +16,7 @@ html,body {
     position: absolute;
     top: 0;
     left: 0;
+    font-family: 'Yanone Kaffeesatz';
 }
 
 #back {
@@ -74,7 +77,7 @@ html,body {
 
 .loader {
     background-color: #eee;
-    height: 30px;
+    height: 20px;
     width: 70%;
     position: absolute;
     top: 80%;
@@ -83,12 +86,12 @@ html,body {
 
 .loader::after {
     content: '';
-    height: 30px;
+    height: 20px;
     width: 0%;
     background-color: red;
     display: block;
     box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #FF0111, 0 0 6px #FF0111, 0 0 8px #FF0111, 0 0 10px #FF0111, 0 0 12px #FF0111;
-    animation: loader 3s linear forwards, glow 500ms ease-in-out infinite alternate;
+    animation: loader 3s 1s linear forwards, glow 500ms ease-in-out infinite alternate;
 }
 
 @keyframes loader {
@@ -171,6 +174,8 @@ html,body {
     z-index: -10;
     height: 100%;
     width: 100%;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
 }
 
 #slider #img-2, #slider #img-3, #slider #img-4 {
@@ -179,15 +184,15 @@ html,body {
 }
 
 #slider #img-2 {
-    animation-delay: 200ms;
+    animation-delay: 500ms;
 }
 
 #slider #img-3 {
-    animation-delay: 1200ms;
+    animation-delay: 1500ms;
 }
 
 #slider #img-4 {
-    animation-delay: 2200ms;
+    animation-delay: 2500ms;
 }
 
 @keyframes slide {
