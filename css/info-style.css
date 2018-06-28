@@ -1,0 +1,195 @@
+/*
+    Colors-
+        Black: #020204  (02,02,04)
+        Dark Grey: #22222A  (34,34,42)
+        Medium Grey: #46413B    (70,65,59)
+        Light Grey: #BEBBB6 (190,187,182)
+        White: #F7F7F5  (247,247,245)
+*/
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200|Dancing+Script|Shadows+Into+Light');
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#back-image {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: -10;
+}
+
+#back-image img {
+    height: 110%;
+    position: relative;
+    top: 0px;
+    left: -750px;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+#info-content {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.column {
+    height: 90%;
+    margin-top: 5%;
+    float: left;
+}
+
+#column-left {
+    width: 55%;
+    font-family: 'Yanone Kaffeesatz';
+}
+
+#column-left #bio {
+    width: 85%;
+    margin: auto;
+}
+
+#column-left #bio #bio-header {
+    font-size: 120%;
+    text-align: center;
+    color: #F7F7F5;
+}
+
+#column-left #bio #bio-content p {
+    font-size: 110%;
+    color: #F7F7F5;
+    text-align: justify;
+}
+
+#column-left #bio #bio-content p::first-letter {
+    font-size: 150%;
+}
+
+#column-right {
+    width: 42%;
+    font-family: 'Yanone Kaffeesatz';
+}
+
+#column-right #form-header {
+    font-size: 120%;
+    text-align: center;
+    color: #F7F7F5;
+}
+
+#column-right #form-header h2 {
+    font-size: 110%;
+    color: #F7F7F5;
+    text-align: center;
+}
+
+#column-right #form-content {
+    height: 80%;
+    width: 80%;
+    margin: auto;
+}
+
+#column-right #form-content form {
+    height: 100%;
+    width: 100%;
+}
+
+#column-right #form-content .input {
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 25px;
+    height: 50px;
+    background-color: rgba(0,0,0,.4);
+    padding-left: 10px;
+    color: #BEBBB6;
+}
+
+#column-right #form-content .input-multiple {
+    min-height: 200px;
+    padding-top: 10px;
+}
+
+#column-right #form-content .button {
+    height: 50px;
+    width: 100px;
+    position: relative;
+    left: calc(50% - 50px);
+    top: 20px;
+    font-size: 20px;
+    border: 2px solid darkorange;
+    color: darkorange;
+    background-color: transparent;
+    transition: 0.3s;
+}
+
+#column-right #form-content .button:hover {
+    background-color: darkorange;
+    color: #46413B;
+    border: #46413B;
+}
+
+@media only screen and (max-width: 768px) {
+    .column {
+        float: none;
+    }
+    
+    #back-image {
+        height: auto;
+    }
+    
+    #back-image img {
+        left: -1000px;
+    }
+    
+    #info-content {
+        height: auto;
+    }
+    
+    #column-left, #column-right {
+        width: 100%;
+        margin-top: 0;
+        padding-top: 50px;
+        padding-bottom: 10px;
+    }
+    
+    #column-left #bio #bio-header {
+        font-size: 120%;
+    }
+    
+    #column-left #bio #bio-content {
+        padding-bottom: 20px;
+    }
+    
+    #column-left #bio #bio-content p {
+        font-size: 100%;
+    }
+    
+    #column-right {
+        background-image: url(../img/webpages/ship-water-river-photography-fotophilous.jpg);
+        background-position: 90% 0%;
+        background-size: cover;
+        padding-bottom: 40px;
+    }
+    
+    #column-right #form-header {
+        font-size: 120%;
+    }
+    
+    #column-right #form-content form .button {
+        top: 0px;
+    }
+}

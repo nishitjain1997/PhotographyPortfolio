@@ -2,37 +2,96 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <meta name="keywords" content="photography,photo,photographer,portfolio,photography portfolio,camera,click,picture,picture portfolio"/>
-        <meta name="description" content="Dispersion Photography | Shashank Jain photography"/>
+        <meta name="keywords" content="photography,photo,photographer,portfolio,photography portfolio,camera,click,picture,picture portfolio,home"/>
+        <meta name="description" content="Fotophilous Photography | Shashank Jain Photography"/>
         <meta name="author" content="Nishit Jain"/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         
-        <title>Welcome | Dispersion Photography</title>
+        <title>Home | Fotophilous Photography</title>
         
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" type="text/css" href="css/index-style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
         
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" src="js/script.js"></script>
+        <script>
             $(document).ready(function() {
-                window.setTimeout(function() {
-                    $(".circle").hide();
-                    $(".text").animate({
-                        'width':'0%'
-                    },200);
-                    
-                    window.setTimeout(function() {
-                        $(".text").addClass("green");
-                        $(".text").html("Complete");
-                        $(".text").animate({
-                            'width':'100%'
-                        },200);
-                    },200);
-                },3500);
+                $(".toggle").click(function() {
+                    toggleNav();
+                });
                 
-                window.setTimeout(function() {
-                    window.location = 'home.html'
-                },4500);
+                $("nav #menu-icons ul li").eq(0).addClass("active");
+                
+                $(window).scroll(function() {
+                    var height = $(window).height();
+                    
+                    var screenTop = $(window).scrollTop();
+                    var screenBottom = screenTop + height;
+                    
+                    /*  For banner  */
+                    var bannerTop = $("#banner").offset().top;
+                    var bannerBottom = bannerTop + $("#banner").height();
+                    
+                    // Parallax effect on banner
+                    if(screenTop <= bannerBottom) {
+                        var offset = screenTop / 2;
+                        $("#banner").css({
+                            'background-position': '0px ' + offset + 'px'
+                        });
+                        
+                        offset /= 10;
+                        offset += 45;
+                        
+                        $("#banner-text h1").css({
+                            'top': offset + "%"
+                        })
+                    }
+                    
+                    /*  For portfolio section   */
+                    var portfolioTop = $("#portfolio").offset().top;
+                    var portfolioBottom = portfolioTop + $("#portfolio").height();
+                    
+                    // Hide menu bar
+                    if(screenTop > portfolioTop - 100 && screenTop < portfolioBottom) {
+                        $("nav").css({
+                            'height':'0px'
+                        });
+                    }
+                    else {
+                        $("nav").css({
+                            'height':'50px'
+                        });
+                    }
+                    
+                    // For menu icon status
+                    var aboutTop = $("#about").offset().top;
+                    var aboutBottom = aboutTop + $("#about").height();
+                    
+                    if(screenBottom > (aboutTop + height / 2) && screenBottom < (aboutBottom + height / 2)) {
+                        $("nav #menu-icons ul li").eq(0).removeClass("active");
+                        $("nav #menu-icons ul li").eq(1).removeClass("active");
+                        $("nav #menu-icons ul li").eq(2).addClass("active");
+                    }
+                    else if(screenBottom > (portfolioTop + height / 2) && screenBottom < (portfolioBottom + height / 2)) {
+                        $("nav #menu-icons ul li").eq(0).removeClass("active");
+                        $("nav #menu-icons ul li").eq(1).addClass("active");
+                        $("nav #menu-icons ul li").eq(2).removeClass("active");
+                    }
+                    else {
+                        $("nav #menu-icons ul li").eq(0).addClass("active");
+                        $("nav #menu-icons ul li").eq(1).removeClass("active");
+                        $("nav #menu-icons ul li").eq(2).removeClass("active");
+                    }
+                });
+                
+                $(".slide-section").click(function(e) {
+                    e.preventDefault();
+                    var linkHref = $(this).attr("href");
+                    $("html,body").animate({
+                        scrollTop: $(linkHref).offset().top
+                    },500);
+                });
             })
         </script>
     </head>
@@ -45,23 +104,134 @@
                 <h1>Oops! Javascript unavailable. Turn on javascript and refresh to continue.</h1>
             </div>
         </noscript>
-        <div id="back">
-            <div class="spinner">
+        
+        <nav>
+            <div id="menu-bar" class="toggle">
+                <div id="bar-1" class="bar"></div>
+                <div id="bar-2" class="bar"></div>
             </div>
-            <div class="load">
-                <div class="text blue">Loading</div>
-                <div class="circle blue" id="one"></div>
-                <div class="circle blue" id="two"></div>
-                <div class="circle blue" id="three"></div>
+            
+            <div id="menu-icons">
+                <ul>
+                    <li>
+                        <a href="#banner" class="slide-section">Home</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="slide-section">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="slide-section">About</a>
+                    </li>
+                </ul>
             </div>
-            <div class="loader">
+        </nav>
+        
+        <div id="banner">
+            <div id="banner-text">
+                <h1>Fotophilous</h1>
+                <a href="#about" class="slide-section">
+                    <i class="fa fa-chevron-down"></i>
+                </a>
             </div>
         </div>
-        <div id="slider">
-            <img id="img-1" src="img/architecture_mini/_F1A6488.jpg"/>
-            <img id="img-2" src="img/nature_mini/_F1A5845.jpg"/>
-            <img id="img-3" src="img/portraits_mini/_F1A3478.jpg"/>
-            <img id="img-4" src="img/products_mini/_F1A0209.jpg"/>
+        
+        <div id="about">
+            <div id="about-header" class="header">
+                <h1>Me? I capture photos.</h1>
+            </div>
+            <div id="about-content">
+                <div id="about-left" class="about-half">
+                    <h2>
+                        <p>
+                            Life is a story to be explored, experienced and unfolded. We all try to find our own ways to live and share our stories with others. 
+                        </p>
+                        <p>
+                            I am a professional photographer with a clear focus - to help others experience a chapter of their life to relive; with a larger goal to create such memories that together define the story of my life.
+                        </p>
+                        <a href="info.html">
+                            <input type="button" value="Know More"/>
+                        </a>
+                    </h2>
+                </div>
+                <div id="about-right" class="about-half">
+                    <div id="self-image">
+                    </div>
+                </div>
+                <div id="about-bottom">
+                    <h2>
+                    </h2>
+                </div>
+            </div>
+            <div class="clear"></div>
         </div>
+        
+        <div id="portfolio">
+            <div id="portfolio-header" class="header">
+                <h1>Portfolio</h1>
+            </div>
+            <div id="portfolio-content">
+                <div id="column-1" class="column">
+                    <a href="portraits.html">
+                        <figure>
+                            <img src="img/webpages/portrait-rhythm-tahilramaney-photography-fotophilous.jpg"/>
+                            <figcaption>Portraits</figcaption>
+                        </figure>
+                    </a>
+                    <a href="products.html">
+                        <figure>
+                            <img src="img/webpages/products-still-life-passion-sapil-perfume-photography-fotophilous.jpg"/>
+                            <figcaption>Products &amp; Still Life</figcaption>
+                        </figure>
+                    </a>
+                </div>
+                <div id="column-2" class="column">
+                    <a href="architecture.html">
+                        <figure>
+                            <img src="img/webpages/architecture-interior-farmhouse-farm-house-blue-sky-lights-photography-fotophilous.jpg"/>
+                            <figcaption>Architecture &amp; Interior</figcaption>
+                        </figure>
+                    </a>
+                    <a href="food.html">
+                        <figure>
+                            <img src="img/webpages/food.jpg"/>
+                            <figcaption>Food</figcaption>
+                        </figure>
+                    </a>
+                </div>
+                <div id="column-3" class="column">
+                    <a href="nature.html">
+                        <figure>
+                            <img src="img/webpages/nature-travel-river-rocks-photography-fotophilous.jpg"/>
+                            <figcaption>Nature &amp; Travel</figcaption>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        
+        <div id="break">
+            <div id="break-inner">
+                <div id="social-header" class="header">
+                    <h1>Social</h1>
+                </div>
+                <div id="social">
+                    <a href="https://www.facebook.com/Fotophilous"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/shashankjain9039/"><i class="fa fa-instagram"></i></a>
+                    <a href="https://500px.com/jainshashank9039"><i class="fa fa-500px"></i></a>
+                    <a href="https://www.quora.com/profile/Shashank-Jain-374"><i class="fa fa-quora"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div id="footer-content">
+                <h2><a href="#banner" class="slide-section">Fotophilous</a></h2>
+                <h3>Shashank Jain (Photographer)</h3>
+                <h4>
+                Website created by: Nishit Jain (nishitjain1997@gmail.com)
+                </h4>
+            </div>
+        </footer>
     </body>
 </html>

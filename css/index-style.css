@@ -1,201 +1,402 @@
-@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200');
+/*
+    Colors-
+        Black: #020204  (02,02,04)
+        Dark Grey: #22222A  (34,34,42)
+        Medium Grey: #46413B    (70,65,59)
+        Light Grey: #BEBBB6 (190,187,182)
+        White: #F7F7F5  (247,247,245)
+*/
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200|Dancing+Script|Shadows+Into+Light');
 
 * {
-    margin: 0;
-    padding: 0;
     border: 0;
+    padding: 0;
+    margin: 0;
 }
 
-html {
-    overflow: hidden;
-}
-
-html,body {
+html, body {
     height: 100%;
     width: 100%;
+    font-size: 16px;
+}
+
+/*    Banner     */
+
+#banner {
+    height: 100%;
+    width: 100%;
+    background-image: url(../img/webpages/mountains-clouds-background-photography-fotophilous.jpg);
+    background-size: cover;
+    background-position: 0px 0px;
+}
+
+#banner-text {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(34,34,42,0.7);
+}
+
+#banner-text h1 {
+    height: 100px;
+    width: 350px;
+    color: #F7F7F5;
+    font-size: 80px;
+    font-family: 'Dancing Script';
+    font-weight: bolder;
+    text-align: center;
+    position: relative;
+    top: 45%;
+    left: calc(50% - 175px);
+}
+
+#banner-text a {
+    border: 2px solid #BEBBB6;
+    height: 25px;
+    width: 40px;
+    padding-top: 5px;
+    text-align: center;
+    display: block;
+    color: #BEBBB6;
+    text-decoration: none;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 92%;
+    left: calc(50% - 20px);
+    transition: 500ms;
+    animation: chevronGlow 500ms ease-in-out infinite;
+}
+
+#banner-text a:hover {
+    border: 2px solid #F7F7F5;
+    color: #F7F7F5;
+}
+
+@keyframes chevronGlow {
+    0% { border: 2px solid #BEBBB6; color: #BEBBB6; }
+    50% { border: 2px solid #F7F7F5; color: #F7F7F5; }
+}
+
+/*    Banner Ends     */
+
+/*    About     */
+
+#about {
+    height: auto;
+    min-height: 100%;
+    width: 90%;
+    margin: auto;
+    background-color: #F7F7F5;
+    color: #46413B;
+    padding-bottom: 30px;
     font-family: 'Yanone Kaffeesatz';
 }
 
-#back {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,.6);
+#about #about-header {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 130%;
+    text-align: center;
 }
 
-.spinner {
-    height: 150px;
-    width: 150px;
-    position: absolute;
-    top: 30%;
-    left: calc(50% - 75px);
-    border-radius: 50%;
-    background-color: #eee;
-    border: 5px solid transparent;
+#about p {
+    text-align: justify;
+    font-size: 130%;
 }
 
-.spinner::before, .spinner::after {
-    content: '';
-    display: block;
+#about p:nth-child(2) {
+    margin-top: 20px;
 }
 
-.spinner::before {
-    border: 5px solid transparent;
-    border-top-color: dodgerblue;
-    border-bottom-color: dodgerblue;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    position: absolute;
-    top: -30px;
-    left: -30px;
-    animation: spin 1500ms linear infinite;
+#about a input {
+    border: 2px solid #22222A;
+    height: 50px;
+    width: 140px;
+    font-size: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #F7F7F5;
+    color: #22222A;
+    transition: 0.3s;
 }
 
-.spinner::after {
-    border: 5px solid transparent;
-    border-left-color: deepskyblue;
-    border-right-color: deepskyblue;
-    height: 170px;
-    width: 170px;
-    border-radius: 50%;
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    animation: spin 1500ms linear infinite reverse;
+#about a input:hover {
+    cursor: pointer;
+    background-color: #22222A;
+    color: #F7F7F5;
+    border: #F7F7F5;
 }
 
-@keyframes spin {
-    0% {transform: rotateZ(0deg) scale(1);}
-    40% {transform: rotateZ(180deg) scale(1);}
-    50% {transform: rotateZ(180deg) scale(0.6);}
-    90% {transform: rotateZ(360deg) scale(0.6);}
-    100% {transform: rotateZ(360deg) scale(1);}
-}
-
-.loader {
-    background-color: #eee;
-    height: 20px;
-    width: 70%;
-    position: absolute;
-    top: 80%;
-    left: 15%;
-}
-
-.loader::after {
-    content: '';
-    height: 20px;
-    width: 0%;
-    background-color: red;
-    display: block;
-    box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #FF0111, 0 0 6px #FF0111, 0 0 8px #FF0111, 0 0 10px #FF0111, 0 0 12px #FF0111;
-    animation: loader 3s 1s linear forwards, glow 500ms ease-in-out infinite alternate;
-}
-
-@keyframes loader {
-    0% {width: 2%;}
-    30% {width: 38%;}
-    60% {width: 41%;}
-    75% {width: 68%;}
-    90% {width: 70%;}
-    100% {width: 100%;}
-}
-
-@keyframes glow {
-    from { box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px #FF0111, 0 0 6px #FF0111, 0 0 8px #FF0111, 0 0 10px #FF0111, 0 0 12px #FF0111; }
-    to { box-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 8px #FF0111, 0 0 12px #FF0111, 0 0 16px #FF0111, 0 0 20px #FF0111, 0 0 24px #FF0111; }
-}
-
-.load {
-    display: flex;
-    height: 80px;
-    width: 380px;
+#about h2 {
+    width: 90%;
     margin: auto;
-    padding-left: 10px;
-    position: absolute;
-    top: 65%;
-    left: calc(50% - 190px);
 }
 
-.load .text {
-    font-size: 60px;
-    font-family: monospace;
-}
-
-.blue {
-    color: steelblue;
-    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px dodgerblue, 0 0 6px dodgerblue, 0 0 8px dodgerblue, 0 0 10px dodgerblue, 0 0 12px dodgerblue;
-}
-
-.green {
-    color: limegreen;
-    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px lime, 0 0 6px lime, 0 0 8px lime, 0 0 10px lime, 0 0 12px lime;
-}
-
-.load .circle {
-    border: 2px solid steelblue;
-    border-radius: 50%;
-    height: 15px;
-    width: 15px;
-    position: relative;
-    top: calc(50% - 5px);
-    margin-left: 10px;
-    box-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px dodgerblue, 0 0 6px dodgerblue, 0 0 8px dodgerblue, 0 0 10px dodgerblue, 0 0 12px dodgerblue;
-    animation: bounce 1s infinite;
-}
-
-.load #two {
-    animation-delay: 300ms;
-}
-
-.load #three {
-    animation-delay: 600ms;
-}
-
-@keyframes bounce {
-    0% { transform: translate(0px,0px); }
-    8% { transform: translate(0px,-20px); }
-    24% { transform: translate(0px,5px); }
-    30% { transform: translate(0px,0px); }
-    100% { transform: translate(0px,0px); }
-}
-
-#slider {
+#about .about-half {
     height: 100%;
-    width: 100%;
+    width: 50%;
+    margin-bottom: 2%;
+    float: left;
 }
 
-#slider img {
+#about #about-right #self-image {
+    height: 80vh;
+    width: 40vw;
+    margin: auto;
+    background-image: url(../img/shashank-jain-photographer-self-portrait-black.jpg);
+    background-size: cover;
+}
+
+/*    About Ends     */
+
+/*    Portfolio     */
+
+#portfolio {
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+    background-color: #22222A;
+    font-family: 'Yanone Kaffeesatz';
+    color: #F7F7F5;
+    padding-bottom: 70px;
+}
+
+#portfolio #portfolio-header {
+    text-align: center;
+    font-size: 130%;
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+
+#portfolio #portfolio-content {
+    height: auto;
+    width: 90%;
+    margin: auto;
+}
+
+#portfolio #portfolio-content .column {
+    float: left;
+    overflow: hidden;
+    height: auto;
+}
+
+#portfolio #portfolio-content .column figure {
+    position: relative;
+}
+
+#portfolio #portfolio-content .column figure figcaption {
+    height: 70%;
+    padding-top: 55%;
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -10;
+    font-size: 200%;
+    text-align: center;
+    display: none;
+}
+
+#portfolio #portfolio-content .column figure:hover figcaption {
+    display: block;
+    background-color: rgba(0,0,0,0.4);
+}
+
+#portfolio #portfolio-content .column figure img {
+    transition: 0.2s;
+    transform: scale(1);
+}
+
+#portfolio #portfolio-content .column figure:hover img {
+    transform: scale(1.2);
+}
+
+
+#portfolio #portfolio-content .column a {
+    text-decoration: none;
+    color: #F7F7F5;
+}
+
+#portfolio #portfolio-content #column-1 {
+    width: 32%;
+}
+
+#portfolio #portfolio-content #column-1 figure {
+    height: 530px;
+    width: auto;
+    overflow: hidden;
+}
+
+#portfolio #portfolio-content #column-1 figure figcaption {
+    padding-top: 65%;
+}
+
+#portfolio #portfolio-content #column-1 figure img {
+    height: auto;
+    width: 100%;
+}
+
+#portfolio #portfolio-content #column-2 {
+    width: 33%;
+}
+
+#portfolio #portfolio-content #column-2 figure {
+    height: 430px;
+    width: auto;
+    overflow: hidden;
+}
+
+#portfolio #portfolio-content #column-2 figure img {
+    height: 100%;
+    width: auto;
+    position: relative;
+    left: -40px;
+}
+
+#portfolio #portfolio-content #column-3 {
+    width: 35%;
+}
+
+#portfolio #portfolio-content #column-3 figure {
+    height: 410px;
+}
+
+#portfolio #portfolio-content #column-3 figure img {
+    height: 100%;
+}
+/*    Portfolio Ends     */
+
+/*    Break     */
+
+#break {
+    height: auto;
+    width: 100%;
+    background-image: url(../img/webpages/nature-travel-clouds-bnw-black-white.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#break #break-inner {
     height: 100%;
     width: 100%;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
+    background-color: rgba(0,0,0,0.2);
+    padding-bottom: 30px;
 }
 
-#slider #img-2, #slider #img-3, #slider #img-4 {
-    left: 100%;
-    animation: slide 1s forwards;
+#break #social-header {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    text-align: center;
+    font-size: 140%;
+    font-family: 'Yanone Kaffeesatz';
+    color: #22222A;
 }
 
-#slider #img-2 {
-    animation-delay: 500ms;
+#break #social {
+    min-height: 150px;
+    height: auto;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-#slider #img-3 {
-    animation-delay: 1500ms;
+#break #social a {
+    text-decoration: none;
+    color: #BEBBB6;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #22222A;
 }
 
-#slider #img-4 {
-    animation-delay: 2500ms;
+#break #social i {
+    font-size: 30px;
+    margin-top: 25px;
 }
 
-@keyframes slide {
-    0% { left: 100%; }
-    100% { left: 0%; }
+/*    Break Ends     */
+
+/*    Mobile Devices     */
+@media only screen and (max-width: 768px) {
+    #about #about-header {
+        font-size: 120%;
+    }
+    
+    #about p {
+        font-size: 110%;
+    }
+    
+    #about p:nth-child(2) {
+        font-size: 140%;
+    }
+    
+    #about .about-half {
+        float: none;
+        width: 100%;
+    }
+    
+    #about #about-right #self-image {
+        width: 90vw;
+    }
+    
+    #portfolio #portfolio-header {
+        font-size: 120%;
+    }
+    
+    #portfolio #portfolio-content a {
+        display: block;
+        margin-top: 20px;
+    }
+    
+    #portfolio #portfolio-content #column-1, #portfolio #portfolio-content #column-2, #portfolio #portfolio-content #column-3 {
+        float: none;
+        width: 100%;
+    }
+    
+    #portfolio #portfolio-content #column-1 figure figcaption, #portfolio #portfolio-content #column-2 figure figcaption, #portfolio #portfolio-content #column-3 figure figcaption {
+        height: auto;
+        width: 100%;
+        text-align: center;
+        padding-top: 0%;
+        font-size: 200%;
+    }
+
+    #portfolio #portfolio-content #column-1 a:nth-child(2) figure img {
+        position: relative;
+        top: -120px;
+    }
+    
+    #portfolio #portfolio-content .column figure {
+        height: auto;
+        width: 100%;
+    }
+    
+    #portfolio #portfolio-content .column figure figcaption {
+        display: block;
+        background-color: rgba(0,0,0,0.4);
+    }
+    
+    #portfolio #portfolio-content .column figure:hover img {
+        transform: scale(1);
+    }
+    
+    #break #break-inner #social-header {
+        font-size: 120%;
+    }
+    
+    #break #social-header h1 {
+        color: #BEBBB6;
+        background-color: rgba(0,0,0,.2);
+    }
+    
+    #break #social a {
+        height: 60px;
+        width: 60px;
+    }
+    
+    #break #social i {
+        font-size: 20px;
+        margin-top: 20px;
+    }
 }

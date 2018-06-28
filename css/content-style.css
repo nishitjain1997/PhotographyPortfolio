@@ -1,0 +1,152 @@
+/*
+    Colors-
+        Black: #020204  (02,02,04)
+        Dark Grey: #22222A  (34,34,42)
+        Medium Grey: #46413B    (70,65,59)
+        Light Grey: #BEBBB6 (190,187,182)
+        White: #F7F7F5  (247,247,245)
+*/
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200|Dancing+Script|Shadows+Into+Light');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html,body {
+    height: 100%;
+    width: 100%;
+}
+
+/*    Banner     */
+
+#banner {
+    height: 100%;
+    width: 100%;
+}
+
+.architecture-banner {
+    background-image: url(../img/webpages/architecture-back-interior-farmhouse-farm-house-blue-sky-lights-photography-fotophilous.jpg);
+}
+
+.food-banner {
+    background-image: url(../img/webpages/food-back.jpg);
+}
+
+.nature-banner {
+    background-image: url(../img/webpages/nature-back.jpg);
+}
+
+.portraits-banner {
+    background-image: url(../img/webpages/portraits-back.jpg);
+}
+
+.products-banner {
+    background-image: url(../img/webpages/products-back.jpg);
+}
+
+#banner #banner-overlay {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(02,02,04,0.4);
+}
+
+#banner #banner-overlay h1 {
+    height: 100px;
+    width: 350px;
+    color: #F7F7F5;
+    font-size: 80px;
+    font-family: 'Dancing Script';
+    font-weight: bolder;
+    text-align: center;
+    position: relative;
+    top: 40%;
+    left: calc(50% - 175px);
+}
+
+#banner #banner-overlay h2 {
+    border-top: 2px solid #F7F7F5;
+    height: 50px;
+    width: 300px;
+    color: #F7F7F5;
+    font-size: 40px;
+    font-family: 'Yanone Kaffeesatz';
+    text-align: center;
+    position: relative;
+    top: 42%;
+    left: calc(50% - 150px);
+}
+
+#banner #banner-overlay #chevron-down {
+    border: 2px solid #BEBBB6;
+    position: absolute;
+    top: 90%;
+    left: calc(50% - 25px);
+    font-size: 30px;
+    color: #BEBBB6;
+    padding: 1px 12px 1px 12px;
+    animation: chevronGlow 500ms ease-in-out infinite;
+}
+
+@keyframes chevronGlow {
+    0% { border: 2px solid #BEBBB6; color: #BEBBB6; }
+    50% { border: 2px solid #F7F7F5; color: #F7F7F5; }
+}
+
+#chevron-up {
+    border: 2px solid #F7F7F5;
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: rgba(70,65,59,0.4);
+    text-align: center;
+    font-size: 40px;
+    display: none;
+}
+
+#chevron-up a {
+    color: #F7F7F5;
+}
+
+/*    Banner Ends     */
+
+/*    Content     */
+
+#content {
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    background-color: #F7F7F5;
+    padding-top: 90px;
+}
+
+#content #content-wrap {
+    height: auto;
+    width: 90%;
+    margin: auto;
+}
+
+#content #content-wrap img {
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    height: 250px;
+}
+
+#content #content-wrap img:hover {
+    opacity: 0.7;
+}
+
+/*    Content Ends     */
+@media only screen and (max-width: 768px) {
+    #content {
+        padding-bottom: 80px;
+    }
+    #content #content-wrap img {
+        height: auto;
+        width: 100%;
+    }
+}

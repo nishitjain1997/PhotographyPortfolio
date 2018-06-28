@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="keywords" content="photography,photo,photographer,portfolio,photography portfolio,camera,click,picture,picture portfolio,nature,travel"/>
+        <meta name="description" content="Fotophilous Photography | Shashank Jain Photography"/>
+        <meta name="author" content="Nishit Jain"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        
+        <title>Nature | Travel | Fotophilous Photography</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/content-style.css"/>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="lightbox.css"/>
+        
+        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/jquery.lazyloadxt.min.js"></script>
+        <script type="text/javascript" src="js/lightbox.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".toggle").click(function() {
+                    toggleNav();
+                });
+                
+                $(window).scroll(function() {
+                    var screenTop = $(window).scrollTop();
+                    var screenBottom = screenTop + $(window).height();
+                    
+                    var bannerTop = $("#banner").offset().top;
+                    var bannerBottom = bannerTop + $("#banner").height();
+                    
+                    if(screenTop <= bannerBottom) {
+                        var offset = screenTop / 2;
+                        $("#banner").css({
+                            'background-position': '0px ' + offset + 'px'
+                        });
+                        
+                        offset /= 10;
+                        offset += 40;
+                        
+                        $("#banner #banner-overlay h1").css({
+                            'top': offset + "%"
+                        })
+                        
+                        offset += 2;
+                        
+                        $("#banner #banner-overlay h2").css({
+                            'top': offset + "%"
+                        })
+                        
+                        $("#chevron-up").css({
+                            'display':'none'
+                        });
+                    }
+                    
+                    if(screenTop > bannerBottom) {
+                        $("#chevron-up").css({
+                            'display':'block'
+                        });
+                    }
+                });
+                
+                $(".slide-section").click(function(e) {
+                    e.preventDefault();
+                    var linkHref = $(this).attr("href");
+                    $("html,body").animate({
+                        scrollTop: $(linkHref).offset().top
+                    },500);
+                });
+            })
+        </script>
+        <script type="text/javascript">
+            lightbox.option({
+                'fadeDuration':200,
+                'imageFadeDuration':200,
+                'resizeDuration':200,
+                'wrapAround':false,
+                'disableScrolling':true
+            })
+            
+            document.addEventListener('contextmenu',function(e) {
+                e.preventDefault();
+            },false);
+        </script>
+    </head>
+    <body>
+        <noscript>
+            <div id="overlay">
+                <div id="inner">
+                    <img src="img/nature_mini/_F1A1015.jpg"/>
+                </div>
+                <h1>Oops! Javascript unavailable. Turn on javascript and refresh to continue.</h1>
+            </div>
+        </noscript>
+        
+        <nav>
+            <div id="menu-bar" class="toggle">
+                <div id="bar-1" class="bar"></div>
+                <div id="bar-2" class="bar"></div>
+            </div>
+            
+            <div id="menu-icons">
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="index.html#portfolio">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="info.html">Info</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div id="banner" class="nature-banner">
+            <div id="banner-overlay">
+                <h1>Fotophilous</h1>
+                <h2>Nature &amp; Travel</h2>
+                <a href="#content" class="slide-section">
+                    <div id="chevron-down">
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div id="chevron-up">
+            <a href="#banner" class="slide-section">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+        
+        <div id="content" class="content">
+            <div id="content-wrap">
+                <!--
+                    To add images, copy and paste the following.
+                    <a href="link of high quality image" data-lightbox="gallery">
+                        <img class="lazy" data-src="link of low quality image" alt="text to be displayed when image cannot be displayed (also used by Google for SEO)"/>
+                    </a>
+                -->
+                <a href="img/architecture_large/2.jpg" data-lightbox="gallery">
+                    <img class="lazy" data-src="img/architecture_mini/2.jpg"/>
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <div id="footer-content">
+                <h2><a href="#banner" class="slide-section">Fotophilous</a></h2>
+                <h3>Shashank Jain (Photographer)</h3>
+                <h4>
+                Website created by: Nishit Jain (nishitjain1997@gmail.com)
+                </h4>
+            </div>
+        </footer>
+    </body>
+</html>
